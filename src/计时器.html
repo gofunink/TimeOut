@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #container{
+            width: 300px;
+            height: 100px;
+            border: 1px solid bisque;
+            margin: 20px auto;
+        }
+        #box{
+            width: 280px;
+            margin: 10px auto;
+        }
+        #input{
+            width: 100px;
+            margin: 5px auto;
+        }
+       button{
+           margin: 5px 10px;
+       }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="box">
+        <button id="hh">0</button>&nbsp;
+            <button>:</button>
+        <button id="mm">0</button>&nbsp;
+            <button>:</button>
+            <button id="ss">0</button>&nbsp;<br/>
+        </div>
+        <div id="input">
+        <input type="button" id="btn1" value="开始" onclick="timeStart()"/>
+        <input type="button" id="btn2" value="暂停" onclick="timePause()"/>
+        </div>
+    </div>
+<script>
+    var start = document.getElementById("btn1");
+    var pause = document.getElementById("btn2");
+    var hour =document.getElementById("hh");
+    var minutes =document.getElementById("mm");
+    var seconds =document.getElementById("ss");
+    var h=0;
+    var m=0;
+    var s=0;
+    var time;
+    function timeStart(){
+        s++;
+        time = setTimeout(timeStart,1000);
+        if(s>59){
+            m++;
+            s=0;
+            if(m>59){
+                h++;
+                m=0;
+            }
+        }
+        hour.innerHTML=h;
+        minutes.innerHTML=m;
+        seconds.innerHTML=s;
+    }
+    function timePause(){
+        clearTimeout(time);
+    }
+</script>
+</body>
+</html>
